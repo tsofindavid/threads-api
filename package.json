@@ -1,44 +1,48 @@
 {
-	"name": "@tsofindavid/threads-api",
-	"version": "1.0.0",
-	"description": "Typed client library for the Threads Graph API",
-	"license": "MIT",
-	"type": "module",
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"files": [
-		"dist"
-	],
-	"sideEffects": false,
-	"engines": {
-		"node": ">=18"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/tsofindavid/threads-api.git"
-	},
-	"bugs": {
-		"url": "https://github.com/tsofindavid/threads-api/issues"
-	},
-	"homepage": "https://github.com/tsofindavid/threads-api#readme",
-	"scripts": {
-		"build": "tsc",
-		"test": "bun test",
-		"lint": "biome check --write ./src",
-		"typecheck": "tsc --noEmit",
-		"prepack": "bun run build",
-		"prepublishOnly": "bun run typecheck && bun run build && bun run test"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.9",
-		"@types/bun": "latest",
-		"typescript": "^5"
-	},
-	"peerDependencies": {
-		"typescript": "^5"
-	},
-	"publishConfig": {
-		"access": "public"
-	}
+  "name": "@tsofindavid/threads-api",
+  "version": "1.0.0",
+  "description": "Typed client library for the Threads Graph API",
+  "license": "MIT",
+  "keywords": [
+    "threads",
+    "meta"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsofindavid/threads-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tsofindavid/threads-api/issues"
+  },
+  "homepage": "https://github.com/tsofindavid/threads-api#readme",
+  "scripts": {
+    "build": "tsc",
+    "test": "bun test",
+    "lint": "biome check --write ./src",
+    "typecheck": "tsc --noEmit",
+    "prepack": "bun run build",
+    "prepublishOnly": "bun run typecheck && bun run build && bun run test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.9",
+    "@types/bun": "latest",
+    "typescript": "^5"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
