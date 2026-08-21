@@ -36,7 +36,7 @@ bun add @tsofindavid/threads-api
 ## Quick start
 
 ```ts
-import { ThreadsAPI } from "threads-api"
+import { ThreadsAPI } from "@tsofindavid/threads-api"
 
 const client = new ThreadsAPI({ accessToken: process.env.THREADS_ACCESS_TOKEN })
 
@@ -154,7 +154,7 @@ import {
   ThreadsRequestError,
   ThreadsServerError,
   ThreadsParseError,
-} from "threads-api"
+} from "@tsofindavid/threads-api"
 
 try {
   await client.raw.user.getProfile("me")
@@ -184,7 +184,7 @@ const client = new ThreadsAPI({ accessToken: "..." })
 Auto-refresh on 401 via `RefreshingTokenProvider`. The refresh callback is injected by the consumer:
 
 ```ts
-import { ThreadsAPI, RefreshingTokenProvider } from "threads-api"
+import { ThreadsAPI, RefreshingTokenProvider } from "@tsofindavid/threads-api"
 
 const auth = new RefreshingTokenProvider({
   token: longLivedToken,
@@ -223,12 +223,12 @@ The library never reads environment variables and never prints to stdout. Loggin
 ## Package subpath imports
 
 ```ts
-import type { ThreadsMedia } from "threads-api/models"
-import { ThreadsAPIError } from "threads-api/errors"
-import { FetchTransport } from "threads-api/transport"
-import { StaticTokenProvider } from "threads-api/auth"
-import { RawPublishing } from "threads-api/raw"
-import { paginate } from "threads-api/convenience"
+import type { ThreadsMedia } from "@tsofindavid/threads-api/models"
+import { ThreadsAPIError } from "@tsofindavid/threads-api/errors"
+import { FetchTransport } from "@tsofindavid/threads-api/transport"
+import { StaticTokenProvider } from "@tsofindavid/threads-api/auth"
+import { RawPublishing } from "@tsofindavid/threads-api/raw"
+import { paginate } from "@tsofindavid/threads-api/convenience"
 ```
 
 ## Testing
@@ -240,8 +240,8 @@ bun test
 The transport is swapped via `config.fetch` or `FetchTransport` without monkey-patching. Example raw test:
 
 ```ts
-import { FetchTransport, StaticTokenProvider } from "threads-api"
-import { RawUser } from "threads-api/raw"
+import { FetchTransport, StaticTokenProvider } from "@tsofindavid/threads-api"
+import { RawUser } from "@tsofindavid/threads-api/raw"
 
 const fetchImpl = () => Promise.resolve(new Response(JSON.stringify({ id: "1", username: "u" }), { status: 200 }))
 const transport = new FetchTransport({

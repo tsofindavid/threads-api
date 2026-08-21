@@ -44,5 +44,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@tsofindavid/threads-api": "^1.0.1"
   }
 }

@@ -4,6 +4,9 @@
   "workspaces": {
     "": {
       "name": "threads-api",
+      "dependencies": {
+        "@tsofindavid/threads-api": "^1.0.1",
+      },
       "devDependencies": {
         "@biomejs/biome": "2.5.9",
         "@types/bun": "latest",
@@ -32,6 +35,8 @@
     "@biomejs/cli-win32-arm64": ["@biomejs/cli-win32-arm64@2.5.9", "", { "os": "win32", "cpu": "arm64" }, "sha512-nHK+/HHC+D0ogAHUxomgoSTdjImb6fmNNVTKmf0tyu4eDL1DqPKIHc+i+UL8+b0RnAu8224qo8F2tCVnaT0A3w=="],
 
     "@biomejs/cli-win32-x64": ["@biomejs/cli-win32-x64@2.5.9", "", { "os": "win32", "cpu": "x64" }, "sha512-Yiq0H56LjXSSw/hd9YkXgSLQfzyDJzbzU2TezozxyNw+uKWAqOtqGVvBfzKRRDiaFF5avGAhHdWKx7LtDOShUw=="],
+
+    "@tsofindavid/threads-api": ["@tsofindavid/threads-api@1.0.1", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-P1iZYULfVP/5yuYNwF1331vxjaNJxRjunzeY/LV6iY8c3pGKvTFRQZxrVLVbuo2iio+JOFwaJDcbGlyORUs8Vw=="],
 
     "@types/bun": ["@types/bun@1.4.0", "", { "dependencies": { "bun-types": "1.4.0" } }, "sha512-K+lZULY23vRgK/CfTjFIV+tyifaNdSMlPh9j+6mQ/cLfpOznLyAuzgV/JQysyECpkBQLVMSyvjlr2fBUSA9wFQ=="],
 
