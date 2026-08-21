@@ -6,7 +6,31 @@ Runs on Bun and Node.js (uses only standard `fetch`/`URL`/`URLSearchParams`).
 ## Install
 
 ```sh
-bun install
+npm i @tsofindavid/threads-api
+```
+
+With npm:
+
+```sh
+npm install @tsofindavid/threads-api
+```
+
+With yarn:
+
+```sh
+yarn add @tsofindavid/threads-api
+```
+
+With pnpm:
+
+```sh
+pnpm add @tsofindavid/threads-api
+```
+
+With bun:
+
+```sh
+bun add @tsofindavid/threads-api
 ```
 
 ## Quick start
