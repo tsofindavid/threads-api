@@ -7,29 +7,8 @@ Runs on Bun and Node.js (uses only standard `fetch`/`URL`/`URLSearchParams`).
 
 ```sh
 npm i @tsofindavid/threads-api
-```
-
-With npm:
-
-```sh
-npm install @tsofindavid/threads-api
-```
-
-With yarn:
-
-```sh
 yarn add @tsofindavid/threads-api
-```
-
-With pnpm:
-
-```sh
 pnpm add @tsofindavid/threads-api
-```
-
-With bun:
-
-```sh
 bun add @tsofindavid/threads-api
 ```
 
@@ -172,6 +151,50 @@ Common error fields: `status`, `providerCode`, `requestId` (`fbtrace_id`), `resp
 **Retriable:** network errors, timeout, 5xx. The transport retries automatically with exponential backoff (`maxRetries` defaults to 3).
 
 **Not retriable:** 4xx (including 429 — the limit rolls over 24h), 401, 403.
+
+## OAuth
+
+Full server-side flow, from sending the user to Threads to getting a refreshable long-lived token.
+
+```ts
+import {
+  buildAuthorizationUrl,
+  parseAuthorizationRedirect,
+  ThreadsAPI,
+} from "@tsofindavid/threads-api"
+
+// 1. Send the user to the Authorization Window
+const authUrl = buildAuthorizationUrl({
+  clientId: process.env.THREADS_APP_ID!,
+  redirectUri: "https://example.com/auth/callback",
+  scope: ["threads_basic", "threads_content_publish"],
+  state: crypto.randomUUID(), // CSRF protection, verify it back on the callback
+})
+// redirect the user's browser to `authUrl`
+
+// 2. Handle the redirect back to your `redirectUri`
+const result = parseAuthorizationRedirect(request.url)
+if (!result.ok) {
+  // result.error / result.errorReason / result.errorDescription
+  throw new Error(result.errorDescription ?? result.error)
+}
+
+// 3. Exchange the code for a short-lived token, then upgrade it to a long-lived one
+const client = new ThreadsAPI({ accessToken: "" }) // token not needed for these calls
+const { access_token: shortLived } = await client.raw.authTokens.exchangeCode({
+  client_id: process.env.THREADS_APP_ID!,
+  client_secret: process.env.THREADS_APP_SECRET!,
+  code: result.code,
+  redirect_uri: "https://example.com/auth/callback",
+})
+const { access_token: longLived } = await client.raw.authTokens.exchangeToken(
+  shortLived,
+  process.env.THREADS_APP_SECRET!,
+)
+// persist `longLived` (valid 60 days, refreshable via RefreshingTokenProvider below)
+```
+
+`scope` accepts any of `threads_basic`, `threads_content_publish`, `threads_manage_replies`, `threads_read_replies`, `threads_manage_insights` (also exported as `THREADS_SCOPES`); `threads_basic` is required by the API.
 
 ## Authentication
 

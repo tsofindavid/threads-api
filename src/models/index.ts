@@ -45,6 +45,8 @@ export {
 	MEDIA_SEARCH_TYPES,
 } from "./media.js";
 export type { OEmbedData } from "./oembed.js";
+export type { ThreadsScope } from "./scopes.js";
+export { THREADS_SCOPES } from "./scopes.js";
 export type {
 	PublishingLimitData,
 	PublishingLimitResponse,

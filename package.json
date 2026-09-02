@@ -32,7 +32,8 @@
     "lint": "biome check --write ./src",
     "typecheck": "tsc --noEmit",
     "prepack": "bun run build",
-    "prepublishOnly": "bun run typecheck && bun run build && bun run test"
+    "prepublishOnly": "bun run typecheck && bun run build && bun run test",
+    "version:bump": "npm version --no-git-tag-version"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.9",
@@ -44,8 +45,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@tsofindavid/threads-api": "^1.0.1"
   }
 }

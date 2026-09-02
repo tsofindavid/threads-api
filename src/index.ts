@@ -1,3 +1,14 @@
+export type { AuthorizationUrlParams } from "./auth/authorization-url.js";
+export {
+	buildAuthorizationUrl,
+	DEFAULT_AUTHORIZATION_BASE_URL,
+} from "./auth/authorization-url.js";
+export type {
+	AuthorizationFailure,
+	AuthorizationRedirectResult,
+	AuthorizationSuccess,
+} from "./auth/callback.js";
+export { parseAuthorizationRedirect } from "./auth/callback.js";
 export type { RefreshingTokenProviderOptions } from "./auth/refreshing.js";
 export { RefreshingTokenProvider } from "./auth/refreshing.js";
 export { StaticTokenProvider } from "./auth/static.js";
@@ -64,6 +75,7 @@ export type {
 	ThreadsLocation,
 	ThreadsMedia,
 	ThreadsMediaChildren,
+	ThreadsScope,
 	ThreadsUser,
 	ThreadsWebhookEvent,
 	UserMetric,
@@ -77,6 +89,7 @@ export {
 	REPLY_CONTROLS,
 	SEARCH_MODES,
 	SEARCH_TYPES,
+	THREADS_SCOPES,
 	USER_METRICS,
 } from "./models/index.js";
 export type {
