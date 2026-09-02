@@ -1,6 +1,6 @@
 {
   "name": "@tsofindavid/threads-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Typed client library for the Threads Graph API",
   "license": "MIT",
   "keywords": [
